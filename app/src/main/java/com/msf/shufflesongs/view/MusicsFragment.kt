@@ -11,6 +11,7 @@ import com.msf.shufflesongs.R
 import com.msf.shufflesongs.databinding.FragmentMusicsListBinding
 import com.msf.shufflesongs.model.Music
 import com.msf.shufflesongs.util.ItemDecoration
+import com.msf.shufflesongs.util.UtilList
 import com.msf.shufflesongs.viewmodel.MusicViewModel
 import kotlin.random.Random
 
@@ -79,7 +80,7 @@ class MusicsFragment : Fragment() {
     }
 
     private fun createAdapter(){
-        onlyList.shuffle(Random(128))
+        UtilList.shuffle(onlyList)
         binding.recyclerViewFeed.adapter =
             MusicsRecyclerViewAdapter(onlyList)
         setVisibilityViews(true)
