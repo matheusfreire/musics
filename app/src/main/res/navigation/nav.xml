@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav"
-    app:startDestination="@id/musicsFragment">
+    app:startDestination="@id/initialFragment">
 
     <fragment
         android:id="@+id/musicsFragment"
         android:name="com.msf.shufflesongs.view.MusicsFragment"
         android:label="MusicsFragment" />
+    <fragment
+        android:id="@+id/initialFragment"
+        android:name="com.msf.shufflesongs.InitialFragment"
+        android:label="InitialFragment" >
+        <action
+            android:id="@+id/action_initialFragment_to_musicsFragment"
+            app:destination="@id/musicsFragment" />
+    </fragment>
 </navigation>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -27,6 +28,7 @@ class MusicsFragment : Fragment() {
         with(binding.recyclerViewFeed) {
             addItemDecoration(ItemDecoration(columnCount, dpToPx()))
         }
+        (requireActivity() as AppCompatActivity).supportActionBar!!.show()
         viewModel = ViewModelProviders.of(requireActivity())[MusicViewModel::class.java]
         return binding.root
     }
@@ -39,13 +41,24 @@ class MusicsFragment : Fragment() {
         super.onResume()
         setVisibilityViews(false)
         viewModel.liveDataMusicResponse.observe(this, Observer {
-            if(it.resultCount > 0){
-                binding.recyclerViewFeed.adapter = MusicsRecyclerViewAdapter(it.results)
-                setVisibilityViews(true)
-            } else {
-                showEmptyMessage()
+            it?.let {
+                if (it.resultCount > 0) {
+                    val onlyList = it.results.filter { it.wrapperType.equals("track") }
+                    binding.recyclerViewFeed.adapter = MusicsRecyclerViewAdapter(onlyList)
+                    setVisibilityViews(true)
+                } else {
+                    showEmptyMessage(requireActivity().getString(R.string.somenthing_wrong))
+                }
+            }.run {
+                showEmptyMessage(requireActivity().getString(R.string.somenthing_wrong))
             }
         })
+        viewModel.liveDataMutableMessageError.observe(this, Observer {
+            it?.let{
+                showEmptyMessage(it)
+            }
+        })
+        viewModel.getMusic()
     }
 
     private fun setVisibilityViews(visibilityOfRecycler: Boolean){
@@ -53,8 +66,9 @@ class MusicsFragment : Fragment() {
         binding.recyclerViewFeed.visibility = if(visibilityOfRecycler) View.VISIBLE else View.GONE
     }
 
-    private fun showEmptyMessage() {
+    private fun showEmptyMessage(message: String) {
         binding.progressLoading.visibility = View.GONE
+        binding.errorMessage.text = message
         binding.errorMessage.visibility = View.VISIBLE
     }
 }

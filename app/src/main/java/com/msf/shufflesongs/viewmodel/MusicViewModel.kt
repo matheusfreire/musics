@@ -16,8 +16,15 @@ class MusicViewModel(application: Application) : AndroidViewModel(application){
     val liveDataMusicResponse: LiveData<MusicResponse>
         get() = mutableMusicResponse
 
+    private val mutableMessageError: MutableLiveData<String> by lazy{
+        MutableLiveData<String>()
+    }
+
+    val liveDataMutableMessageError: LiveData<String>
+        get() = mutableMessageError
+
 
     fun getMusic(){
-        MusicRepository.getMusics(getApplication(),{mutableMusicResponse.postValue(it)}, {mutableMusicResponse.postValue(null)})
+        MusicRepository.getMusics(getApplication(),{mutableMusicResponse.postValue(it)}, {mutableMessageError.postValue(it)})
     }
 }

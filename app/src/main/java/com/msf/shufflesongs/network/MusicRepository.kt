@@ -19,7 +19,7 @@ object MusicRepository {
     }
 
     fun getMusics(context: Context, onSuccess: (musicResponse: MusicResponse?) -> Unit, onFailure: (message: String?) -> Unit){
-        getService(context).getFeed(JOHN_DOLLAR_ID, CHARLINE_CHEWIE_ID, BLOCO_TOTI_ID, MC_ARIANNE_ID, DECIMAIS_ID)
+        getService(context).getFeed(listOf(JOHN_DOLLAR_ID, CHARLINE_CHEWIE_ID, BLOCO_TOTI_ID, MC_ARIANNE_ID, DECIMAIS_ID))
             .enqueue(object: Callback<MusicResponse> {
                 override fun onFailure(call: Call<MusicResponse>, t: Throwable) {
                     onFailure(t.message)

@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface Services {
 
-    @GET("/feed")
-    fun getFeed(@Query("id") vararg id: Int) : Call<MusicResponse>
+    @GET("/lookup")
+    fun getFeed(@Query("id") id: List<Int>) : Call<MusicResponse>
 }
