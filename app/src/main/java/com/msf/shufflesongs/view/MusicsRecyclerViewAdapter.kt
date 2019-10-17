@@ -28,7 +28,11 @@ class MusicsRecyclerViewAdapter(private val mValues: List<Music>) : RecyclerView
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         fun bind(music: Music){
             with(mView){
-                Picasso.get().load(music.artworkUrl).into(imgMusicAlbum)
+                Picasso.get().load(music.artworkUrl).fit().centerCrop()
+                    .placeholder(R.drawable.shuffle)
+                    .error(R.drawable.logo)
+                    .into(imgMusicAlbum)
+//                Picasso.get().load(music.artworkUrl).into(imgMusicAlbum)
                 txtMusicTitle.text = music.trackName
                 txtMusicSinger.text = context.getString(R.string.music_item,music.artistName, music.primaryGenreName)
             }
