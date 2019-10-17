@@ -13,7 +13,7 @@ object WebServiceManager {
 
     private var baseUrl = BuildConfig.BASE_URL
 
-    fun getinstance(context: Context): Services {
+    fun getInstance(context: Context): Services {
         return retrofit(context).create(Services::class.java)
     }
 
@@ -21,7 +21,7 @@ object WebServiceManager {
 
         val client = OkHttpClient.Builder()
         client.readTimeout(60, TimeUnit.SECONDS)
-        client.connectTimeout(15, TimeUnit.SECONDS)
+        client.connectTimeout(60, TimeUnit.SECONDS)
 
         client.addInterceptor { chain ->
 

@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface Services {
 
     @GET("/lookup")
-    fun getFeed(@Query("id") id: List<Int>) : Call<MusicResponse>
+    fun getFeed(@Query("id", encoded = true) id: String) : Call<MusicResponse>
 }

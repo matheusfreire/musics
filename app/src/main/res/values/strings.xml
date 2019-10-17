@@ -2,4 +2,6 @@
     <string name="app_name">Shuffle Songs</string>
     <string name="music_item">%1$s (%2$s)</string>
     <string name="somenthing_wrong">Something got wrong, please try again</string>
+    <string name="no_music_founded">No music founded</string>
+    <string name="shuffle">Shuffle</string>
 </resources>

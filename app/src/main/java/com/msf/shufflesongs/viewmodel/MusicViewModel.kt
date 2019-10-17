@@ -24,7 +24,7 @@ class MusicViewModel(application: Application) : AndroidViewModel(application){
         get() = mutableMessageError
 
 
-    fun getMusic(){
-        MusicRepository.getMusics(getApplication(),{mutableMusicResponse.postValue(it)}, {mutableMessageError.postValue(it)})
+    fun getMusic(listId: List<Int>) {
+        MusicRepository.getMusics(getApplication(), listId,{mutableMusicResponse.postValue(it)}, {mutableMessageError.postValue(it)})
     }
 }
