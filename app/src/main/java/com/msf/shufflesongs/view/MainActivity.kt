@@ -1,7 +1,8 @@
-package com.msf.shufflesongs
+package com.msf.shufflesongs.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.msf.shufflesongs.R
 
 class MainActivity : AppCompatActivity() {
 

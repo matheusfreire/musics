@@ -1,4 +1,4 @@
-package com.msf.shufflesongs
+package com.msf.shufflesongs.view
 
 
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.msf.shufflesongs.R
 import com.msf.shufflesongs.databinding.FragmentInitialBinding
 
 class InitialFragment : Fragment() {
@@ -17,7 +18,8 @@ class InitialFragment : Fragment() {
     private lateinit var binding: FragmentInitialBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_initial, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_initial, container, false)
         return binding.root
     }
 

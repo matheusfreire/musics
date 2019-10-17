@@ -1,9 +1,10 @@
-package com.msf.shufflesongs
+package com.msf.shufflesongs.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.msf.shufflesongs.R
 import com.msf.shufflesongs.model.Music
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_musics.view.*

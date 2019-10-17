@@ -9,7 +9,7 @@
         android:label="MusicsFragment" />
     <fragment
         android:id="@+id/initialFragment"
-        android:name="com.msf.shufflesongs.InitialFragment"
+        android:name="com.msf.shufflesongs.view.InitialFragment"
         android:label="InitialFragment" >
         <action
             android:id="@+id/action_initialFragment_to_musicsFragment"
